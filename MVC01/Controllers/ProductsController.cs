@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MVC01.Models;
 using System.Net.Mime;
 
 namespace MVC01.Controllers
@@ -13,7 +14,24 @@ namespace MVC01.Controllers
             return View();
         }
 
-        [HttpGet("Json")]
+        #region Session02
+        public IActionResult Search(ProductFilter Filter)
+        {
+            return View();
+        }
+
+        public IActionResult SearchByQuery([FromQuery] int id)
+        {
+            return View();
+        }
+
+        public IActionResult GetById([FromRoute(Name = "id")] int code, [FromQuery(Name = "id2")] int code2)
+        {
+            return View();
+        }
+        #endregion
+
+        // [HttpGet("Json")]
         public JsonResult GetJsonResults()
         {
             var products = new List<Models.Product>
@@ -25,7 +43,7 @@ namespace MVC01.Controllers
             return Json(products);
         }
 
-        [HttpGet("ProductCode/{id}")]
+        //[HttpGet("ProductCode/{id}")]
         public IActionResult GetProducts(int id)
         {
             if (id == 0)
